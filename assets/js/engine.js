@@ -2,36 +2,65 @@ const state = {
     view: {
         squares: document.querySelectorAll('.square'),
         enemy: document.querySelector('.enemy'),
-        timer: document.querySelector('.timer'),
-        points: document.querySelector('.points')
+        timeLeft: document.querySelector('.timer'),
+        score: document.querySelector('.points')
     },
     values: {
-        timerID: null,
-        gameVelocity: 1000
+        points: 0,
+        timer: 60,
+        enemyPosition: 0
+    },
+    actions: {
+        timerID: setInterval(randomEnemyPosition, 1000),
+        countdownTimerID: setInterval(countdown, 1000)
     }
 }
 
 function randomEnemyPosition() {
+    /*
+    let currentPosition = -1
+    */
     state.view.squares.forEach((square) => {
+        /*
+        if (square.classList.contains('enemy')) {
+            currentPosition = square.id
+        }
+        */
         square.classList.remove('enemy')
     })
 
     let position = Math.floor(Math.random()*9)
     state.view.squares[position].classList.add("enemy")
-
-    state.values.timerID = setInterval(randomEnemyPosition, state.values.gameVelocity)
+    state.values.enemyPosition = state.view.squares[position].id
 }
 
 function addListenerHitbox() {
     state.view.squares.forEach((square) => {
-        if (square.id === enemy.id) {
-
-        }
+        square.addEventListener('mousedown', () => {
+            if (square.id === state.values.enemyPosition) {
+                state.values.points++
+                state.view.score.textContent = state.values.points
+                state.values.enemyPosition = null
+            }
+        })
     })
 }
 
+function countdown() {
+    state.values.timer--
+    state.view.timeLeft.textContent = state.values.timer
+
+    if (state.values.timer <= 0) {
+        clearInterval(state.actions.countdownTimerID)
+        clearInterval(state.actions.timerID)
+        alert(`
+        GAME OVER!
+        points: ${state.values.points}`)
+    }
+}
+
 function main() {
-    randomEnemyPosition()
+    addListenerHitbox()
 }
 
 main();
