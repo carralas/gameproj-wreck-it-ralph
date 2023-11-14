@@ -18,6 +18,17 @@
     color: #ff0000;
 }
 
+.menu .lives {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.lives img {
+    width: 50px;
+}
+
 .game {
     display: flex;
     width: 100%;
@@ -26,8 +37,8 @@
     align-items: center;
     justify-content: center;
     
-    border-top: 1px solid #ff0000;
-    border-bottom: 1px solid #ff0000;
+    background-image: url("../img/background.png");
+
     padding: 25px;
 }
 
@@ -35,10 +46,15 @@
     width: 150px;
     height: 150px;
 
+    background-color: #ffffff99;
+
     border: 1px solid #000000;
     margin: 5px;
 }
 
 .square.enemy {
-    background-color: #ff0000;
+    background-image: url("../img/ralph-placeholder.png");
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
