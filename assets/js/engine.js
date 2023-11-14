@@ -30,7 +30,7 @@ function randomEnemyPosition() {
     })
 
     let position = Math.floor(Math.random()*9)
-    state.view.squares[position].classList.add("enemy")
+    state.view.squares[position].classList.add('enemy')
     state.values.enemyPosition = state.view.squares[position].id
 }
 
@@ -39,11 +39,18 @@ function addListenerHitbox() {
         square.addEventListener('mousedown', () => {
             if (square.id === state.values.enemyPosition) {
                 state.values.points++
+                hitSucessAudio('hit')
                 state.view.score.textContent = state.values.points
                 state.values.enemyPosition = null
             }
         })
     })
+}
+
+function hitSucessAudio(file) {
+    let audio = new Audio(`./assets/audio/${file}.m4a`)
+    audio.volume = 0.1
+    audio.play()
 }
 
 function countdown() {
