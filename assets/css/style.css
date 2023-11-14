@@ -1,14 +1,44 @@
 .menu {
     display: flex;
-    width: 100%;
-    height: 100px;
+
     align-items: center;
     justify-content: space-evenly;
+
+    width: 100%;
+    height: 100px;
 
     background-color: #000000;
     color: #ffffff;
 }
 
-.title {
+.menu .title {
+    align-items: center;
+    justify-content: space-evenly;
+
     color: #ff0000;
+}
+
+.game {
+    display: flex;
+    width: 100%;
+    height: 515px;
+
+    align-items: center;
+    justify-content: center;
+    
+    border-top: 1px solid #ff0000;
+    border-bottom: 1px solid #ff0000;
+    padding: 25px;
+}
+
+.row .square {
+    width: 150px;
+    height: 150px;
+
+    border: 1px solid #000000;
+    margin: 5px;
+}
+
+.square.enemy {
+    background-color: #ff0000;
 }
